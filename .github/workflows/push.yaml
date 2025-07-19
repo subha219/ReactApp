@@ -14,3 +14,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Deploy to production
+        run: echo "Deploying to production environment"  
