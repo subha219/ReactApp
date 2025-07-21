@@ -3,6 +3,7 @@ on:
   pull_request: # This triggers the workflow on pull request events
     types: # This specifies the types of pull request events to trigger the workflow
       - opened # This triggers on pull request opened events
+      - closed # This triggers on pull request closed events
   workflow_dispatch: # This allows manual triggering of the workflow    
 jobs:
   push_job:
