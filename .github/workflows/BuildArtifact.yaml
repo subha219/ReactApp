@@ -13,16 +13,23 @@ jobs:
       - name: Build project
         run: npm run build   
 
-      - name : Upload artifact
-        uses: actions/upload-artifact@v4
+      - name : Upload artifact # This step uploads the build artifact
+        uses: actions/upload-artifact@v4 # This action uploads files to GitHub
         with:
-          name: build-artifact
-          path: |
-            build/
-            dist/
-            public/
-            src/
-            node_modules/
-            package.json
-            package-lock.json
-            .env
+          name: build-artifact # Name of the artifact
+          path: | # This specifies the files to include in the artifact
+             build/
+             dist/
+             public/
+             package.json
+          
+  deploy_job:
+    runs-on: ubuntu-latest
+    needs: push_job # This job depends on the completion of push_job
+    steps:
+      - name: Download artifact # This step downloads the artifact from the previous job
+        uses: actions/download-artifact@v4 # This action downloads files from GitHub
+        with:
+          name: build-artifact # Name of the artifact to download       
+      - name: Deploy application # This step deploys the application
+        run: echo "Deploying application..."  
