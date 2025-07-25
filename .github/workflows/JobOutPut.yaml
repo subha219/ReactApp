@@ -1,5 +1,5 @@
 name: Buil Artifact Event
-on: workflow_dispatch
+on: push
 jobs:
   push_job:
     runs-on: ubuntu-latest
@@ -30,6 +30,9 @@ jobs:
       - name: Download artifact # This step downloads the artifact from the previous job
         uses: actions/download-artifact@v4 # This action downloads files from GitHub
         with:
-          name: build-artifact # Name of the artifact to download       
+          name: build-artifact # Name of the artifact to download    
+      - name: Output content
+        run: ls       # This command lists the contents of the current directory to verify the downloaded files
+  
       - name: Deploy application # This step deploys the application
         run: echo "Deploying application..."  
