@@ -1,4 +1,4 @@
-name: Buil Artifact Event
+name: Job Output workflow
 on: push
 jobs:
   push_job:
