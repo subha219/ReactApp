@@ -21,9 +21,6 @@ function Header() {
                     <li className="nav-item">
                         <a className="nav-link" href="#">Login</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Graph</a>
-                    </li>
                 </ul>
             </div>
         </nav>
