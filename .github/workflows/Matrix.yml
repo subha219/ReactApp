@@ -1,0 +1,32 @@
+# The strategy matrix in GitHub Actions is a powerful feature that allows for the execution of a single job definition across multiple, varied configurations.
+# Instead of creating separate, redundant jobs for each configuration, the matrix strategy enables the definition of a set of variables and their corresponding values.
+# GitHub Actions then automatically generates and runs a distinct job for every possible combination of these variables.
+
+name: Matrix Strategy Example
+on: push
+jobs:
+  build:
+    strategy: # Define the strategy matrix
+      matrix: # Define the variables and their values
+        # Here, we define the operating systems and Node.js versions to test against.
+        os: [ubuntu-latest, windows-latest] # Operating systems
+        node-version: [14, 16, 18] # Node.js versions
+    runs-on: ${{ matrix.os }} # Use the current matrix value for the OS
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }} # Use the current matrix value for Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        continue-on-error: true
+        run: npm test
+
+      - name: Build project
+        run: npm run build
