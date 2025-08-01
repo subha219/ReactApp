@@ -10,8 +10,18 @@ jobs:
     strategy: # Define the strategy matrix
       matrix: # Define the variables and their values
         # Here, we define the operating systems and Node.js versions to test against.
-        os: [ubuntu-latest] # Operating systems
-        node-version: [14, 16, 18] # Node.js versions
+        os: [ubuntu-latest,windows-latest] # Operating systems
+        node-version: [12,14,16] # Node.js versions
+        include: # Include specific combinations if needed
+          - os: ubuntu-latest
+            node-version: 18
+        exclude: # Exclude specific combinations if needed
+          - os: windows-latest
+            node-version: 12 
+          - os: windows-latest
+            node-version: 14
+          - os: windows-latest
+            node-version: 16   
     runs-on: ${{ matrix.os }} # Use the current matrix value for the OS
     steps:
       - name: Checkout code
