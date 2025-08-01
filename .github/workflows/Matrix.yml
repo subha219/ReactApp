@@ -6,6 +6,7 @@ name: Matrix Strategy Example
 on: push
 jobs:
   build:
+    continue-on-error: true
     strategy: # Define the strategy matrix
       matrix: # Define the variables and their values
         # Here, we define the operating systems and Node.js versions to test against.
@@ -24,8 +25,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        continue-on-error: true
+      - name: Run tests     
         run: npm test
 
       - name: Build project
