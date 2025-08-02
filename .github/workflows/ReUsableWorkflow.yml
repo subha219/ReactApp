@@ -1,0 +1,11 @@
+name: Reusable Workflow
+on: workflow_call # Triggered by a workflow call # This is the reusable workflow
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run a script
+        run: echo "This is a reusable workflow job"
