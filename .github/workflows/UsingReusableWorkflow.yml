@@ -2,4 +2,4 @@ name : Using Reusable Workflow
 on : workflow_dispatch # Triggered manually
 jobs:
   deploy:
-    uses: ./.github/workflows/ReUsableWorkflow.yaml
+    uses: ./.github/workflows/ReUsableWorkflow.yml
