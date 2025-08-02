@@ -1,0 +1,5 @@
+name : Using Reusable Workflow
+on : workflow_dispatch # Triggered manually
+jobs:
+  deploy:
+    uses: ./.github/workflows/ReUsableWorkflow.yaml # Path to the reusable workflow
